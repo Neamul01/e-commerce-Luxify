@@ -1,0 +1,15 @@
+# Ignore build directories
+/.next/
+/out/
+next-env.d.ts
+# Ignore node_modules
+/node_modules/
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore generated files
+*.generated.*
+
+# Ignore specific files
+config/*.js

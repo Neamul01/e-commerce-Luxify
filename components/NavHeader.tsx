@@ -10,131 +10,45 @@ import {
   rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-// import { MantineLogo } from "@mantine/ds";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { BsTelephone } from "react-icons/bs";
 
-const useStyles = createStyles((theme) => ({
-  inner: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: rem(56),
-
-    [theme.fn.smallerThan("sm")]: {
-      justifyContent: "flex-start",
-    },
-  },
-
-  links: {
-    width: rem(260),
-
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  social: {
-    width: rem(260),
-
-    [theme.fn.smallerThan("sm")]: {
-      width: "auto",
-      marginLeft: "auto",
-    },
-  },
-
-  burger: {
-    marginRight: theme.spacing.md,
-
-    [theme.fn.largerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  link: {
-    display: "block",
-    lineHeight: 1,
-    padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
-    textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
-  },
-
-  linkActive: {
-    "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
-    },
-  },
-}));
-
-interface HeaderMiddleProps {
-  links: { link: string; label: string }[];
-}
-const links = [
-  { link: "/", label: "Home" },
-  { link: "/about", label: "About" },
-];
-// const links: any = [{ link: "/", label: "Home" }];
 function NavHeader() {
-  const [active, setActive] = useState(links[0].link);
-  const [opened, { toggle }] = useDisclosure(false);
-  const { classes, cx } = useStyles();
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
-
   return (
-    <Header height={56} mb={120}>
-      <Container className={classes.inner}>
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          size="sm"
-          className={classes.burger}
-        />
-        <Group className={classes.links} spacing={5}>
-          {items}
-        </Group>
-        {/* <MantineLogo size={28} /> */}logo
-        <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            {/* <IconBrandTwitter size="1.1rem" stroke={1.5} /> */}
-          </ActionIcon>
-          <ActionIcon size="lg">
-            {/* <IconBrandYoutube size="1.1rem" stroke={1.5} /> */}
-          </ActionIcon>
-          <ActionIcon size="lg">
-            {/* <IconBrandInstagram size="1.1rem" stroke={1.5} /> */}
-          </ActionIcon>
-        </Group>
-      </Container>
+    <Header height={"auto"} className="">
+      <div className="!bg-[#2f7fd0] py-6">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
+          <div className="flex justify-center items-center gap-2 font-sans">
+            <span>
+              <BsTelephone className="text-4xl" />
+            </span>
+            <p className="flex flex-col">
+              <span className="text-xs">Call us now:</span>
+              <span className="text-base font-semibold  ">8842323</span>
+            </p>
+          </div>
+          <div className="">
+            <span className="uppercase text-4xl font-bold text-white font-popins">
+              LuxiFy
+            </span>
+          </div>
+          <div className="flex gap-2">
+            <span>
+              <CgProfile className="text-4xl" />
+            </span>
+            <span className="">
+              <AiOutlineHeart className="text-4xl" />
+            </span>
+            <p className="w-[1px] h-6 mx-2 bg-gray-400 my-auto"></p>
+            <p className="flex flex-col gap-1 text-xs">
+              <span className="">Shopping Cart</span>
+              <span className="font-bold">$00</span>
+            </p>
+            <AiOutlineShoppingCart className="text-4xl" />
+          </div>
+        </div>
+      </div>
     </Header>
   );
 }

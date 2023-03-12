@@ -1,6 +1,7 @@
 import "/styles/globals.css";
 import type { AppProps } from "next/app";
 import NavHeader from "../components/NavHeader";
+import MainNavbar from "../components/MainNavbar";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <NavHeader />
+      <MainNavbar />
       <Component {...pageProps} />
     </>
   );

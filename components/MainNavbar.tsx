@@ -1,49 +1,39 @@
-import React from "react";
-import { useState } from "react";
 import {
   createStyles,
   Header,
+  Menu,
   Group,
-  ActionIcon,
-  Container,
+  Center,
   Burger,
+  Container,
   rem,
+  Input,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+// import { IconChevronDown } from "@tabler/icons-react";
 // import { MantineLogo } from "@mantine/ds";
+import { AiOutlineDown } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const useStyles = createStyles((theme) => ({
+  header: {
+    borderBottom: 0,
+  },
+
   inner: {
+    height: rem(56),
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: rem(56),
-
-    [theme.fn.smallerThan("sm")]: {
-      justifyContent: "flex-start",
-    },
   },
 
   links: {
-    width: rem(260),
-
     [theme.fn.smallerThan("sm")]: {
       display: "none",
     },
   },
 
-  social: {
-    width: rem(260),
-
-    [theme.fn.smallerThan("sm")]: {
-      width: "auto",
-      marginLeft: "auto",
-    },
-  },
-
   burger: {
-    marginRight: theme.spacing.md,
-
     [theme.fn.largerThan("sm")]: {
       display: "none",
     },
@@ -55,88 +45,123 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      backgroundColor: theme.fn.lighten(
+        theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+          .background!,
+        0.1
+      ),
     },
   },
 
-  linkActive: {
-    "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
-    },
+  linkLabel: {
+    marginRight: rem(5),
   },
 }));
 
-interface HeaderMiddleProps {
-  links: { link: string; label: string }[];
+interface HeaderSearchProps {
+  link: string;
+  label: string;
+  links2?: HeaderSearchProps[];
 }
-const links = [
+
+const links: HeaderSearchProps[] = [
   { link: "/", label: "Home" },
-  { link: "/about", label: "About" },
+  {
+    link: "/about",
+    label: "About",
+    links2: [
+      { link: "/", label: "Home" },
+      { link: "/about", label: "About" },
+      { link: "/contact", label: "Contact" },
+    ],
+  },
+  { link: "/contact", label: "Contact" },
 ];
-// const links: any = [{ link: "/", label: "Home" }];
-function NavHeader() {
-  const [active, setActive] = useState(links[0].link);
+
+export function NavHeader() {
   const [opened, { toggle }] = useDisclosure(false);
-  const { classes, cx } = useStyles();
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
+  const { classes } = useStyles();
+
+  const items = links.map((link) => {
+    const menuItems = link?.links2?.map((item) => (
+      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    ));
+
+    if (menuItems) {
+      return (
+        <Menu
+          key={link.label}
+          trigger="hover"
+          transitionProps={{ exitDuration: 0 }}
+          withinPortal
+        >
+          <Menu.Target>
+            <a
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                {/* <IconChevronDown size="0.9rem" stroke={1.5} /> */}
+                <AiOutlineDown />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      );
+    }
+
+    return (
+      <a
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+        onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </a>
+    );
+  });
 
   return (
-    <Header height={56} className="">
-      <div className="">
-        <Container className={classes.inner}>
+    <Header height={56} className={`${classes.header} sticky top-1`}>
+      <Container>
+        <div className={classes.inner}>
+          <div className="flex gap-1 cursor-pointer">
+            <Menu
+              trigger="hover"
+              transitionProps={{ exitDuration: 0 }}
+              withinPortal
+            >
+              <Menu.Target>
+                <Center>
+                  <AiOutlineSearch className="text-2xl" />
+                  <span>Search</span>
+                </Center>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Input placeholder="Search" />
+              </Menu.Dropdown>
+            </Menu>
+          </div>
+          <Group spacing={5} className={`${classes.links}`}>
+            {items}
+          </Group>
           <Burger
             opened={opened}
             onClick={toggle}
-            size="sm"
             className={classes.burger}
+            size="sm"
+            color="#fff"
           />
-          <Group className={classes.links} spacing={5}>
-            {items}
-          </Group>
-          {/* <MantineLogo size={28} /> */}logo
-          <Group spacing={0} className={classes.social} position="right" noWrap>
-            <ActionIcon size="lg">
-              {/* <IconBrandTwitter size="1.1rem" stroke={1.5} /> */}
-            </ActionIcon>
-            <ActionIcon size="lg">
-              {/* <IconBrandYoutube size="1.1rem" stroke={1.5} /> */}
-            </ActionIcon>
-            <ActionIcon size="lg">
-              {/* <IconBrandInstagram size="1.1rem" stroke={1.5} /> */}
-            </ActionIcon>
-          </Group>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </Header>
   );
 }

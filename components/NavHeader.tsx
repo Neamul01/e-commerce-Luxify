@@ -16,10 +16,10 @@ import { BsTelephone } from "react-icons/bs";
 
 function NavHeader() {
   return (
-    <Header height={"auto"} className="">
-      <div className="!bg-[#2f7fd0] py-6">
+    <Header height={"auto"} className="border-none">
+      <div className="!bg-[#2f7fd0] py-6 px-5">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
-          <div className="flex justify-center items-center gap-2 font-sans">
+          <div className="hidden md:flex justify-center items-center gap-2 font-sans">
             <span>
               <BsTelephone className="text-4xl" />
             </span>
@@ -34,14 +34,14 @@ function NavHeader() {
             </span>
           </div>
           <div className="flex gap-2">
-            <span>
+            <span className="hidden md:block">
               <CgProfile className="text-4xl" />
             </span>
-            <span className="">
+            <span className="hidden  sm:block">
               <AiOutlineHeart className="text-4xl" />
             </span>
-            <p className="w-[1px] h-6 mx-2 bg-gray-400 my-auto"></p>
-            <p className="flex flex-col gap-1 text-xs">
+            <p className="w-[1px] h-6 mx-2 bg-gray-400 my-auto hidden sm:block" />
+            <p className="hidden md:flex flex-col gap-1 text-xs">
               <span className="">Shopping Cart</span>
               <span className="font-bold">$00</span>
             </p>

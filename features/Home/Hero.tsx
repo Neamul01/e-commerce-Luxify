@@ -3,6 +3,9 @@ import { Carousel } from "@mantine/carousel";
 import img1 from "../../public/hero/1.jpg";
 import img2 from "../../public/hero/2.jpg";
 import Image, { StaticImageData } from "next/image";
+import { Button } from "@mantine/core";
+import { BsArrowRight } from "react-icons/bs";
+import CustomButton from "../../components/Buttons/CustomButton";
 
 type CarouselInner = {
   id: number;
@@ -30,7 +33,7 @@ const carouselinner: CarouselInner = [
     title: "Mid seasons sale for women's",
     discount: "10% off",
     collection: null,
-    placement: "left",
+    placement: "right",
   },
 ];
 
@@ -40,10 +43,26 @@ function Hero() {
       <Carousel.Slide className="relative">
         <Image className="w-full h-full" src={item.img} alt={item.subtitle} />
         <div className="w-full h-full absolute top-0 left-0 text-black">
-          <div className="w-full h-full flex flex-col">
-            <h1 className="text-4xl font-bold">{item.title}</h1>
-            <h2 className="text-2xl font-bold">{item.subtitle}</h2>
-            <h3 className="text-2xl font-bold">{item.discount}</h3>
+          <div
+            className={`flex ${
+              item.placement === "right" && "justify-end"
+            } ml-32 h-full`}
+          >
+            <div className="!w-[30rem] flex flex-col justify-center">
+              <h2 className="text-2xl font-bold mb-2">{item.subtitle}</h2>
+              <h1 className="text-4xl font-extrabold">{item.title}</h1>
+              <h3 className="text-2xl font-bold text-blue-500 my-3">
+                {item.discount}{" "}
+                <span className="text-base text-gray-600">
+                  For {item.collection}'s collection
+                </span>
+              </h3>
+              <p className="!w-3xl">
+                <CustomButton
+                  iconWithClass={<BsArrowRight className="ml-2" />}
+                />
+              </p>
+            </div>
           </div>
         </div>
       </Carousel.Slide>

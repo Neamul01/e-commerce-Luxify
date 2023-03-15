@@ -40,8 +40,13 @@ const carouselinner: CarouselInner = [
 function Hero() {
   const carouselItem = carouselinner.map((item) => {
     return (
-      <Carousel.Slide className="relative">
-        <Image className="w-full h-full" src={item.img} alt={item.subtitle} />
+      <Carousel.Slide key={item.id} className="relative">
+        <Image
+          priority
+          className="w-full h-full"
+          src={item.img}
+          alt={item.subtitle}
+        />
         <div className="w-full h-full absolute top-0 left-0 text-black">
           <div
             className={`flex ${

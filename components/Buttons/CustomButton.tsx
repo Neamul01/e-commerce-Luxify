@@ -18,7 +18,7 @@ const CustomButton: React.FC<Props> = ({
     <Button
       bg={"dark"}
       size="md"
-      className={`${Bg} hover:${hoverBg}  ${customClass}`}
+      className={`${Bg} hover:${hoverBg} ${customClass}`}
     >
       Shop now {iconWithClass}
     </Button>

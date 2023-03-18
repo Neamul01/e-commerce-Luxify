@@ -61,7 +61,7 @@ function Hero() {
     return (
       <Carousel.Slide
         key={item.id}
-        className="relative overflow-hidden h-[70vh]"
+        className="relative overflow-hidden h-[25rem] md:h-auto"
       >
         <Image
           priority
@@ -102,7 +102,7 @@ function Hero() {
 
   const cards = heroCards.map((card) => {
     return (
-      <div className="w-auto h-auto relative px-4" key={card.id}>
+      <div className="w-auto h-auto relative" key={card.id}>
         <Image src={card.img} alt={card.name} className="w-full" />
         <div
           className={`w-full h-full absolute top-0 left-10 ${card.customClass}`}

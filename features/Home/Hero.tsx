@@ -89,9 +89,11 @@ function Hero() {
                 </span>
               </h3>
               <p className="!w-3xl">
-                <CustomButton
-                  iconWithClass={<BsArrowRight className="ml-2" />}
-                />
+                <p className="w-[12rem]">
+                  <CustomButton
+                    iconWithClass={<BsArrowRight className="ml-2" />}
+                  />
+                </p>
               </p>
             </div>
           </div>
@@ -112,9 +114,10 @@ function Hero() {
             <h2 className="md:text-3xl text-xl font-bold mb-2 md:mb-7">
               {card.name}
             </h2>
-            <p className="md:!w-3xl ">
+            <p className=" md:flex md:justify-start ">
               <CustomButton
-                Bg="!transparent"
+                size="md"
+                Bg="!bg-transparent"
                 hoverBg="!bg-transparent"
                 customClass={card.customClass}
                 iconWithClass={<BsArrowRight className="ml-2" />}
@@ -127,16 +130,18 @@ function Hero() {
   });
 
   return (
-    <div className="w-full h-full relative mb-8">
-      <Carousel
-        mx="auto"
-        withIndicators
-        className=" max-w-7xl h-auto text-white"
-      >
-        {carouselItem}
-      </Carousel>
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-6 w-full mt-5 ">
-        {cards}
+    <div className="pb-16 !bg-white w-full h-full">
+      <div className="w-full max-w-7xl mx-auto h-full relative ">
+        <Carousel
+          mx="auto"
+          withIndicators
+          className=" max-w-7xl h-auto text-white"
+        >
+          {carouselItem}
+        </Carousel>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6 w-full mt-5 ">
+          {cards}
+        </div>
       </div>
     </div>
   );

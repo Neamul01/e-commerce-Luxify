@@ -7,6 +7,7 @@ type Props = {
   hoverBg?: string;
   customClass?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  text?: string;
 };
 
 const CustomButton: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const CustomButton: React.FC<Props> = ({
   hoverBg = "!bg-gray-700",
   customClass = null,
   size = "md",
+  text = "Shop now",
 }) => {
   return (
     <Button
@@ -22,7 +24,7 @@ const CustomButton: React.FC<Props> = ({
       size={size}
       className={`${Bg} hover:${hoverBg} ${customClass}`}
     >
-      Shop now {iconWithClass}
+      {text} {iconWithClass}
     </Button>
   );
 };

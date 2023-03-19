@@ -1,50 +1,94 @@
-import { Input, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
+import { BsArrowRight } from "react-icons/bs";
 import CustomButton from "../../components/Buttons/CustomButton";
-import img1 from "../../public/newsletter/3.jpg";
 import img2 from "../../public/newsletter/4.jpg";
+import NewsletterSideCard from "./NewsletterSideCard";
+import { TbTruckDelivery, TbDatabase } from "react-icons/tb";
+import { MdSupportAgent, MdOutlineDiscount } from "react-icons/md";
+
+const facilitiesCard = [
+  {
+    id: 1,
+    icon: <TbTruckDelivery className="text-5xl" />,
+    title: " free shipping & return",
+    description: "Get free delivery of your orders all over the world.",
+  },
+  {
+    id: 2,
+    icon: <MdSupportAgent className="text-5xl" />,
+    title: " free shipping & return",
+    description: "Get free delivery of your orders all over the world.",
+  },
+  {
+    id: 3,
+    icon: <TbDatabase className="text-5xl" />,
+    title: " free shipping & return",
+    description: "Get free delivery of your orders all over the world.",
+  },
+  {
+    id: 4,
+    icon: <MdOutlineDiscount className="text-5xl" />,
+    title: " free shipping & return",
+    description: "Get free delivery of your orders all over the world.",
+  },
+];
 
 export default function NewsLetter() {
   return (
     <div className="bg-white w-full h-full pt-16 pb-10">
-      <div className="flex gap-6 justify-center max-w-7xl mx-auto h-full">
-        <div className="w-[30%] h-auto flex flex-col justify-between shadow-lg">
-          <div className="w-full h-auto flex flex-col justify-between relative">
-            <Image src={img1} alt="newsletter" />
-            <div className="absolute top-6 left-8">
-              <p className="text-xl font-bold">Flash Sale</p>
-              <p className="text-2xl font-extrabold uppercase text-blue-600">
-                up to 50% off
-              </p>
-              <Text
-                color="dimmed"
-                component="p"
-                className="capitalize text-sm mt-4"
-              >
-                From Luxify store
-              </Text>
-            </div>
+      <div className="flex flex-col gap-20 max-w-7xl mx-auto h-full">
+        <div className="flex gap-6 justify-center w-full h-full">
+          {/* side card */}
+          <div className="w-[30%] h-auto flex flex-col justify-between shadow-lg">
+            <NewsletterSideCard />
           </div>
-          <div className="text-3xl font-bold uppercase w-full text-center">
-            SIGN UP TO OUR NEWSLETTER
-          </div>
-          <div className="flex flex-col gap-6">
-            <div className="w-full px-6">
-              <Input placeholder="Your email" size="xl" />
-            </div>
-            <div className="w-full pb-6 px-6">
-              <CustomButton
-                size="xl"
-                customClass="w-full uppercase text-base"
-                Bg="bg-blue-600"
-                text="subscribe now"
-              />
+          {/* full Image */}
+          <div className="w-[70%]">
+            <div className="relative">
+              <Image src={img2} alt="newsletter" className="w-full h-full" />
+              <div className="absolute top-0 left-10 w-[50%] h-full flex flex-col gap-3 justify-center text-white">
+                <p className="text-xl font-bold uppercase">
+                  THROUGH BLACK FRIDAY
+                </p>
+                <p className="text-5xl font-bold capitalize">
+                  Mid Season's Sale Up to 30% Off
+                </p>
+                <p className="text-base">
+                  Free shipping on all orders over $99.00
+                </p>
+                <div className="w-full">
+                  <CustomButton
+                    size="xl"
+                    Bg="bg-white"
+                    customClass="text-black uppercase text-base hover:text-white"
+                    iconWithClass={<BsArrowRight className="ml-2" />}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="w-[70%]">
-          <Image src={img2} alt="newsletter" className="w-full" />
+        {/* facilities */}
+        <div className="w-full flex gap-1">
+          {facilitiesCard.map((item) => {
+            return (
+              <div className="flex flex-col justify-center items-center gap-2">
+                <p className="text-4xl text-blue-500">{item.icon}</p>
+                <p className="capitalize text-base font-bold">
+                  free shipping & return
+                </p>
+                <Text
+                  color="dimmed"
+                  component="p"
+                  className="text-base capitalize text-center"
+                >
+                  Get free delivery of your orders all over the world.
+                </Text>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

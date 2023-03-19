@@ -88,13 +88,13 @@ function Hero() {
                   For {item.collection}'s collection
                 </span>
               </h3>
-              <p className="!w-3xl">
+              <div className="!w-3xl">
                 <p className="w-[12rem]">
                   <CustomButton
                     iconWithClass={<BsArrowRight className="ml-2" />}
                   />
                 </p>
-              </p>
+              </div>
             </div>
           </div>
         </div>

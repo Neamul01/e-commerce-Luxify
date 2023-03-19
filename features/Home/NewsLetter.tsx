@@ -14,18 +14,21 @@ const facilitiesCard = [
     icon: <TbTruckDelivery className="text-5xl" />,
     title: " free shipping & return",
     description: "Get free delivery of your orders all over the world.",
+    border: true,
   },
   {
     id: 2,
     icon: <MdSupportAgent className="text-5xl" />,
     title: " free shipping & return",
     description: "Get free delivery of your orders all over the world.",
+    border: true,
   },
   {
     id: 3,
     icon: <TbDatabase className="text-5xl" />,
     title: " free shipping & return",
     description: "Get free delivery of your orders all over the world.",
+    border: true,
   },
   {
     id: 4,
@@ -71,21 +74,30 @@ export default function NewsLetter() {
           </div>
         </div>
         {/* facilities */}
-        <div className="w-full flex gap-1">
+        <div className="w-full flex gap-8 justify-between">
           {facilitiesCard.map((item) => {
             return (
-              <div className="flex flex-col justify-center items-center gap-2">
-                <p className="text-4xl text-blue-500">{item.icon}</p>
-                <p className="capitalize text-base font-bold">
-                  free shipping & return
-                </p>
-                <Text
-                  color="dimmed"
-                  component="p"
-                  className="text-base capitalize text-center"
+              <div className="w-full h-full flex justify-center">
+                <div
+                  className={`flex flex-col justify-center items-center gap-2 max-w-[15rem] ${
+                    item.border ? "mr-auto" : "mx-auto"
+                  }`}
                 >
-                  Get free delivery of your orders all over the world.
-                </Text>
+                  <p className="text-4xl text-blue-500">{item.icon}</p>
+                  <p className="capitalize text-base font-bold">
+                    free shipping & return
+                  </p>
+                  <Text
+                    color="dimmed"
+                    component="p"
+                    className="text-base capitalize text-center"
+                  >
+                    Get free delivery of your orders all over the world.
+                  </Text>
+                </div>
+                {item.border && (
+                  <div className="w-[3px] rounded-lg h-36 bg-gray-100"></div>
+                )}
               </div>
             );
           })}

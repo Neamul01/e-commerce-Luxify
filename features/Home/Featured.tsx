@@ -83,7 +83,7 @@ export default function Featured() {
         </div>
         <div className="w-full flex gap-2 items-center">
           {bottomBanner.map((banner) => (
-            <div className="w-full relative">
+            <div key={banner.id} className="w-full relative">
               <Image src={banner.img} alt="banner" className="w-full" />
               <div
                 className={`w-full h-full absolute top-0 left-10 flex flex-col justify-center ${

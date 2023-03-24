@@ -1,11 +1,13 @@
 import { createStyles, Rating, Text } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import React from "react";
 import CustomButton from "../Buttons/CustomButton";
 
 type props = {
   props: {
+    id: number;
     img: StaticImageData[];
     title: string;
     price: number;
@@ -15,7 +17,7 @@ type props = {
 };
 export default function ProductCard(props: props) {
   const { hovered, ref } = useHover();
-  const { img, title, price, rating, status } = props.props;
+  const { id, img, title, price, rating, status } = props.props;
 
   return (
     <div
@@ -29,9 +31,12 @@ export default function ProductCard(props: props) {
       )}
       <Image src={hovered ? img[1] : img[0]} alt="product" />
       {hovered && (
-        <div className="absolute bottom-[23%] bg-green-600 w-full text-center">
+        <Link
+          href={`/products/${id}`}
+          className="absolute bottom-[23%] bg-green-600 w-full text-center"
+        >
           <CustomButton Bg="bg-blue-600" customClass="uppercase w-full" />
-        </div>
+        </Link>
       )}
       <div className="flex flex-col gap-2 justify-center items-center">
         <Text component="p" color="dimmed" size="sm">

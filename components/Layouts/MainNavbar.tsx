@@ -10,6 +10,8 @@ import {
   Input,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import Link from "next/link";
+import { useRouter } from "next/router";
 // import { IconChevronDown } from "@tabler/icons-react";
 // import { MantineLogo } from "@mantine/ds";
 import { AiOutlineDown } from "react-icons/ai";
@@ -70,6 +72,7 @@ interface HeaderSearchProps {
 
 const links: HeaderSearchProps[] = [
   { link: "/", label: "Home" },
+  { link: "products", label: "Products" },
   {
     link: "/about",
     label: "About",
@@ -85,6 +88,7 @@ const links: HeaderSearchProps[] = [
 export function NavHeader() {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
+  const router = useRouter();
 
   const items = links.map((link) => {
     const menuItems = link?.links2?.map((item) => (
@@ -118,14 +122,9 @@ export function NavHeader() {
     }
 
     return (
-      <a
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
-      >
+      <Link key={link.label} href={link.link} className={classes.link}>
         {link.label}
-      </a>
+      </Link>
     );
   });
 

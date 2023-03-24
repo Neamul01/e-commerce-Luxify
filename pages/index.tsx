@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "/styles/Home.module.css";
 import Hero from "../features/Home/Hero";
+import BestSeller from "../features/Home/BestSeller";
+import NewsLetter from "../features/Home/NewsLetter";
 
 //------------- for custom layout
 // import { ReactElement } from "react";
@@ -26,6 +28,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Hero />
+        <BestSeller />
+        <NewsLetter />
       </main>
     </>
   );

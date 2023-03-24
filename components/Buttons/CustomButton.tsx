@@ -2,10 +2,12 @@ import { Button } from "@mantine/core";
 import React from "react";
 
 type Props = {
-  iconWithClass: React.ReactNode;
+  iconWithClass?: React.ReactNode;
   Bg?: string;
   hoverBg?: string;
   customClass?: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  text?: string;
 };
 
 const CustomButton: React.FC<Props> = ({
@@ -13,14 +15,16 @@ const CustomButton: React.FC<Props> = ({
   Bg = "!bg-gray-900",
   hoverBg = "!bg-gray-700",
   customClass = null,
+  size = "md",
+  text = "Shop now",
 }) => {
   return (
     <Button
       bg={"dark"}
-      size="md"
-      className={`${Bg} hover:${hoverBg}  ${customClass}`}
+      size={size}
+      className={`${Bg} hover:${hoverBg} ${customClass}`}
     >
-      Shop now {iconWithClass}
+      {text} {iconWithClass}
     </Button>
   );
 };

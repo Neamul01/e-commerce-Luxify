@@ -77,14 +77,14 @@ export default function BestSeller() {
   return (
     <div className="bg-[#f7fbfe] w-full h-full pt-24 pb-10">
       <div className="flex flex-col items-center justify-center max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold w-full text-center mb-6">
+        <h2 className="text-3xl text-black font-semibold w-full text-center mb-6">
           Best Sellers
         </h2>
         <div className="w-full h-10 bg-white"></div>
-        <div className="w-full grid grid-cols-4 gap-1">
+        <div className="w-full grid md:grid-cols-4 gap-1">
           {productCards.map((card) => {
             return (
-              <div className="" key={card.id}>
+              <div className="px-4" key={card.id}>
                 <ProductCard props={card} />
               </div>
             );

@@ -42,20 +42,20 @@ export default function NewsLetter() {
   return (
     <div className="bg-white w-full h-full pt-16 pb-10">
       <div className="flex flex-col gap-20 max-w-7xl mx-auto h-full">
-        <div className="flex gap-6 justify-center w-full h-full">
+        <div className="flex flex-col md:flex-row gap-6 justify-center w-full h-full">
           {/* side card */}
-          <div className="w-[30%] h-auto flex flex-col justify-between shadow-lg">
+          <div className="md:w-[30%] h-full md:h-auto flex flex-col justify-between shadow-lg">
             <NewsletterSideCard />
           </div>
           {/* full Image */}
-          <div className="w-[70%]">
+          <div className="md:w-[70%] h-auto">
             <div className="relative">
-              <Image src={img2} alt="newsletter" className="w-full h-full" />
+              <Image src={img2} alt="newsletter" className="w-full h-[60vh]" />
               <div className="absolute top-0 left-10 w-[50%] h-full flex flex-col gap-3 justify-center text-white">
-                <p className="text-xl font-bold uppercase">
+                <p className="md:text-xl font-bold uppercase">
                   THROUGH BLACK FRIDAY
                 </p>
-                <p className="text-5xl font-bold capitalize">
+                <p className="md:text-5xl text-2xl font-bold capitalize">
                   Mid Season's Sale Up to 30% Off
                 </p>
                 <p className="text-base">
@@ -74,12 +74,15 @@ export default function NewsLetter() {
           </div>
         </div>
         {/* facilities */}
-        <div className="w-full flex gap-8 justify-between">
+        <div className="w-full h-full flex flex-col md:flex-row gap-8 justify-between items-center  ">
           {facilitiesCard.map((item) => {
             return (
-              <div className="w-full h-full flex justify-center">
+              <div
+                key={item.id}
+                className="w-full h-full flex justify-center border-b md:border-0 pb-5 md:pb-0"
+              >
                 <div
-                  className={`flex flex-col justify-center items-center gap-2 max-w-[15rem] ${
+                  className={`flex flex-col justify-center items-center gap-2 max-w-[15rem] mx-auto ${
                     item.border ? "mr-auto" : "mx-auto"
                   }`}
                 >
@@ -96,7 +99,7 @@ export default function NewsLetter() {
                   </Text>
                 </div>
                 {item.border && (
-                  <div className="w-[3px] rounded-lg h-36 bg-gray-100"></div>
+                  <div className="w-[3px] hidden md:block rounded-lg h-36 bg-gray-100"></div>
                 )}
               </div>
             );

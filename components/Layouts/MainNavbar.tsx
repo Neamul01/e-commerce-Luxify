@@ -129,7 +129,10 @@ export function NavHeader() {
   });
 
   return (
-    <Header height={56} className={`${classes.header} sticky top-1`}>
+    <Header
+      height={56}
+      className={`${classes.header} flex-shrink-0 !sticky !top-0 z-50 shadow-lg`}
+    >
       <Container>
         <div className={classes.inner}>
           <div className="flex gap-1 cursor-pointer">

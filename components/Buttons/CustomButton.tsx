@@ -20,7 +20,7 @@ const CustomButton: React.FC<Props> = ({
 }) => {
   return (
     <Button
-      bg={"dark"}
+      bg={Bg}
       size={size}
       className={`${Bg} hover:${hoverBg} ${customClass}`}
     >

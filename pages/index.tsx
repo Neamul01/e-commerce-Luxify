@@ -5,6 +5,7 @@ import styles from "/styles/Home.module.css";
 import Hero from "../features/Home/Hero";
 import BestSeller from "../features/Home/BestSeller";
 import NewsLetter from "../features/Home/NewsLetter";
+import Featured from "../features/Home/Featured";
 
 //------------- for custom layout
 // import { ReactElement } from "react";
@@ -30,6 +31,7 @@ export default function Home() {
         <Hero />
         <BestSeller />
         <NewsLetter />
+        <Featured />
       </main>
     </>
   );

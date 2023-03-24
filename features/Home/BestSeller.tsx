@@ -84,7 +84,7 @@ export default function BestSeller() {
         <div className="w-full grid md:grid-cols-4 gap-1">
           {productCards.map((card) => {
             return (
-              <div className="px-4" key={card.id}>
+              <div className="px-4 md:px-0" key={card.id}>
                 <ProductCard props={card} />
               </div>
             );

@@ -1,8 +1,12 @@
-import { Rating } from "@mantine/core";
+import { Button, Divider, Rating, Select } from "@mantine/core";
 import React, { useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsFacebook, BsHeart, BsInstagram, BsTwitter } from "react-icons/bs";
+import CustomButton from "../../components/Buttons/CustomButton";
 
 export default function ProductDescription() {
   const [rating, setRating] = useState(4.5);
+  const [count, setCount] = useState(0);
   return (
     <div className="grid grid-cols-2">
       <div className="col-span-1">image</div>
@@ -24,10 +28,75 @@ export default function ProductDescription() {
             adipiscing.
           </p>
           <div className="w-full">
-            <p className="text-base text-gray-600">Color: </p>
+            <div className="text-base text-gray-600 flex items-center gap-2">
+              <p className="">Color: </p>
+              <Select
+                placeholder="Choose an option"
+                data={[
+                  { value: "BLACK", label: "Black" },
+                  { value: "WHITE", label: "white" },
+                ]}
+              />
+            </div>
           </div>
           <div className="w-full">
-            <p className="text-base text-gray-600">Size: </p>
+            <div className="text-base text-gray-600 flex items-center gap-2">
+              <p className="mr-2">Size:</p>
+              <Select
+                placeholder="Choose an option"
+                data={[
+                  { value: "MEDIUM", label: "Medium" },
+                  { value: "LARGE", label: "Large" },
+                ]}
+              />
+            </div>
+          </div>
+          <div className="w-full border-t border-b py-3 flex items-center gap-4">
+            <div className="text-base text-gray-600 flex items-center">
+              <button
+                onClick={() => setCount(count - 1)}
+                className="border-r-0 border py-2 px-3 cursor-pointer"
+                disabled={count === 0}
+              >
+                -
+              </button>
+              <p className="border py-2 px-3"> {count} </p>
+              <button
+                onClick={() => setCount(count + 1)}
+                className="border-l-0 border py-2 px-3 cursor-pointer"
+              >
+                +
+              </button>
+            </div>
+            <div className="w-full">
+              <CustomButton
+                disabled={count === 0 && true}
+                text="Add To Cart"
+                Bg="bg-blue-600"
+                customClass="!flex !flex-row-reverse"
+                iconPosition="left"
+                iconWithClass={
+                  <AiOutlineShoppingCart className="font-bolder mr-2" />
+                }
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-8 text-gray-500">
+            <p className="flex items-center gap-6 ">
+              <BsFacebook />
+              <BsTwitter />
+              <BsInstagram />
+            </p>
+            <div className="h-[1.6rem] w-[1px] bg-gray-400"></div>
+            <div className="" onClick={() => console.log("clicked")}>
+              <CustomButton
+                text="Add To Wishlist"
+                Bg="bg-transparent"
+                customClass="text-gray-500 hover:text-blue-400 hover:!bg-transparent pl-0"
+                iconPosition="left"
+                iconWithClass={<BsHeart className="font-bolder mr-2" />}
+              />
+            </div>
           </div>
         </div>
       </div>

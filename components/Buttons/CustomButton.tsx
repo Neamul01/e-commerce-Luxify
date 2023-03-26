@@ -3,28 +3,42 @@ import React from "react";
 
 type Props = {
   iconWithClass?: React.ReactNode;
+  iconPosition?: "left" | "right";
   Bg?: string;
   hoverBg?: string;
   customClass?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   text?: string;
+  disabled?: boolean;
 };
 
 const CustomButton: React.FC<Props> = ({
   iconWithClass = null,
+  iconPosition = "right",
   Bg = "!bg-gray-900",
   hoverBg = "!bg-gray-700",
   customClass = null,
   size = "md",
   text = "Shop now",
+  disabled = false,
 }) => {
   return (
     <Button
+      disabled={disabled}
       bg={Bg}
       size={size}
       className={`${Bg} hover:${hoverBg} ${customClass}`}
     >
-      {text} {iconWithClass}
+      {iconPosition === "left" ? (
+        <>
+          {iconWithClass}
+          {text}
+        </>
+      ) : (
+        <>
+          {text} {iconWithClass}
+        </>
+      )}
     </Button>
   );
 };

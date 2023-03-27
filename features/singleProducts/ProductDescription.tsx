@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFacebook, BsHeart, BsInstagram, BsTwitter } from "react-icons/bs";
 import CustomButton from "../../components/Buttons/CustomButton";
-import DetailsTab from "./DetailsTab";
+import DetailsSection from "./DetailsSection";
 
 export default function ProductDescription() {
   const [rating, setRating] = useState(4.5);
@@ -104,7 +104,7 @@ export default function ProductDescription() {
         </div>
       </div>
       <div className="w-full mt-16">
-        <DetailsTab />{" "}
+        <DetailsSection />
       </div>
     </div>
   );

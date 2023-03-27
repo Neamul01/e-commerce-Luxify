@@ -1,9 +1,13 @@
 import { Tabs } from "@mantine/core";
+import DescriptionTab from "./DescriptionTab";
+import InformationTab from "./InformationTab";
+import ReviewsTab from "./ReviewsTab";
+import SizeTab from "./SizeTab";
 
-export default function DetailsTab() {
+export default function DetailsSection() {
   return (
     <Tabs defaultValue="description">
-      <Tabs.List position="center" className="gap-8 border-b">
+      <Tabs.List position="center" className="gap-8 border-b mb-8">
         <Tabs.Tab value="description" className="text-xl font-bold">
           Discription
         </Tabs.Tab>
@@ -19,20 +23,18 @@ export default function DetailsTab() {
         </Tabs.Tab>
       </Tabs.List>
 
+      {/* tab contents */}
       <Tabs.Panel value="description" pt="xs">
-        Gallery tab content
+        <DescriptionTab />
       </Tabs.Panel>
-
       <Tabs.Panel value="information" pt="xs">
-        Messages tab content
+        <InformationTab />
       </Tabs.Panel>
-
       <Tabs.Panel value="size" pt="xs">
-        Settings tab content
+        <SizeTab />
       </Tabs.Panel>
-
       <Tabs.Panel value="reviews" pt="xs">
-        reviews tab content
+        <ReviewsTab />
       </Tabs.Panel>
     </Tabs>
   );

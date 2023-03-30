@@ -14,7 +14,10 @@ export default function InformationTab() {
   return (
     <div className="">
       {specificationsData.map((specification) => (
-        <div className="text-gray-600 text-sm leading-6 tracking-wider grid grid-cols-12 mt-1 border-b py-2">
+        <div
+          key={Object.keys(specification)[0]}
+          className="text-gray-600 text-sm leading-6 tracking-wider grid grid-cols-12 mt-1 border-b py-2"
+        >
           <p className="text-gray-900 font-bold col-span-4">
             {Object.keys(specification)}
           </p>

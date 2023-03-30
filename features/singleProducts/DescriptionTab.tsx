@@ -39,7 +39,10 @@ export default function DescriptionTab() {
             </p>
             <div className="mt-3">
               {featuresData.features.map((feature) => (
-                <p className="text-gray-600 text-sm leading-6 tracking-wider flex items-center gap-3">
+                <p
+                  key={feature}
+                  className="text-gray-600 text-sm leading-6 tracking-wider flex items-center gap-3"
+                >
                   <TiTick className="text-lg" /> {feature}
                 </p>
               ))}

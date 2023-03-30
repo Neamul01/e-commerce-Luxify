@@ -7,7 +7,9 @@ import {
   TypographyStylesProvider,
   Paper,
   rem,
+  Rating,
 } from "@mantine/core";
+import AddReview from "./AddReview";
 
 const useStyles = createStyles((theme) => ({
   review: {
@@ -15,7 +17,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   body: {
-    paddingLeft: rem(54),
     paddingTop: theme.spacing.sm,
     fontSize: theme.fontSizes.sm,
   },
@@ -55,35 +56,49 @@ export default function ReviewsTab() {
   const { classes } = useStyles();
 
   return (
-    <>
-      {ReviewsDatas.map((review) => (
-        <Paper
-          key={review.id}
-          withBorder
-          radius="md"
-          className={classes.review}
-        >
-          <Group>
-            <Avatar
-              src={review.author.image}
-              alt={review.author.name}
-              radius="xl"
-            />
-            <div>
-              <Text fz="sm">{review.author.name}</Text>
-              <Text fz="xs" c="dimmed">
-                {review.postedAt}
-              </Text>
-            </div>
-          </Group>
-          <TypographyStylesProvider className={classes.body}>
-            <div
-              className={classes.content}
-              dangerouslySetInnerHTML={{ __html: review.body }}
-            />
-          </TypographyStylesProvider>
-        </Paper>
-      ))}
-    </>
+    <div>
+      <div className="">
+        {ReviewsDatas.map((review) => (
+          <Paper
+            key={review.id}
+            withBorder
+            radius="md"
+            className={`${classes.review} !border-none`}
+          >
+            <Group className="grid grid-cols-12 items-start">
+              <Avatar
+                src={review.author.image}
+                alt={review.author.name}
+                radius="xl"
+                size="xl"
+                className="col-span-1"
+              />
+              <div className="w-full col-span-11">
+                <Text fz="sm">{review.author.name}</Text>
+                <div className="w-full flex justify-between">
+                  <div className="w-full">
+                    <Text fz="xs" c="dimmed">
+                      {review.postedAt}
+                    </Text>
+                  </div>
+                  <div className="w-full flex justify-end">
+                    <Rating value={review.rating} fractions={2} readOnly />
+                  </div>
+                </div>
+                <TypographyStylesProvider className={classes.body}>
+                  <div
+                    className={classes.content}
+                    dangerouslySetInnerHTML={{ __html: review.body }}
+                  />
+                </TypographyStylesProvider>
+              </div>
+            </Group>
+          </Paper>
+        ))}
+      </div>
+      <div className="mt-10">
+        <AddReview />
+      </div>
+    </div>
   );
 }

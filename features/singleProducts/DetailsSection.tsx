@@ -7,18 +7,21 @@ import SizeTab from "./SizeTab";
 export default function DetailsSection() {
   return (
     <Tabs defaultValue="description">
-      <Tabs.List position="center" className="gap-8 border-b mb-8">
-        <Tabs.Tab value="description" className="text-xl font-bold">
+      <Tabs.List
+        position="center"
+        className="md:gap-8 flex-row w-full overflow-x-scroll md:overflow-x-hidden overflow-y-hidden flex-nowrap border-b mb-8 pb-1"
+      >
+        <Tabs.Tab value="description" className="text-lg md:text-xl font-bold">
           Discription
         </Tabs.Tab>
         {/* <Tabs.Tab value="messages" icon={<IconMessageCircle size="0.8rem" />}> */}
-        <Tabs.Tab value="information" className="text-xl font-bold">
+        <Tabs.Tab value="information" className="text-lg md:text-xl font-bold">
           Additional Information
         </Tabs.Tab>
-        <Tabs.Tab value="size" className="text-xl font-bold">
+        <Tabs.Tab value="size" className="text-lg md:text-xl font-bold">
           Size Guide
         </Tabs.Tab>
-        <Tabs.Tab value="reviews" className="text-xl font-bold">
+        <Tabs.Tab value="reviews" className="text-lg md:text-xl font-bold">
           Reviews(1)
         </Tabs.Tab>
       </Tabs.List>

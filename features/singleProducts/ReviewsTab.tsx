@@ -65,7 +65,7 @@ export default function ReviewsTab() {
             radius="md"
             className={`${classes.review} !border-none`}
           >
-            <Group className="grid grid-cols-12 items-start">
+            <Group className="grid md:grid-cols-12 items-start">
               <Avatar
                 src={review.author.image}
                 alt={review.author.name}

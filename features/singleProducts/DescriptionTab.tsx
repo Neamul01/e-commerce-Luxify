@@ -28,7 +28,7 @@ const specificationsData = [
 
 export default function DescriptionTab() {
   return (
-    <div className="grid grid-cols-2 justify-between">
+    <div className="grid grid-cols-1 md:grid-cols-2 justify-between">
       {/* features */}
       <div className="col-span-1 pr-6 flex flex-col gap-12">
         <div className="">
@@ -84,7 +84,7 @@ export default function DescriptionTab() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-          <div className="flex items-center justify-between gap-8 text-gray-500 mt-4 px-5 w-full">
+          <div className="flex items-center flex-col md:flex-row justify-between gap-8 text-gray-500 mt-4 px-5 w-full">
             <div className="flex items-center gap-6 ">
               <div className="border rounded-full p-4 h-full">
                 <AiTwotoneLock className="text-xl" />
@@ -94,7 +94,7 @@ export default function DescriptionTab() {
                 <p className="text-sm text-gray-500">Guarantee with no doubt</p>
               </div>
             </div>
-            <div className="h-[1.6rem] w-[1px] bg-gray-400"></div>
+            <div className="h-[1.6rem] w-[1px] bg-gray-400 hidden md:block"></div>
             <div className="flex items-center gap-6 ">
               <div className="border rounded-full p-4 h-full">
                 <TbTruckDelivery className="text-xl" />

@@ -53,7 +53,7 @@ export default function AddReview() {
             {...form.getInputProps("comment")}
           />
 
-          <div className="w-full flex gap-8 mt-8 mb-6">
+          <div className="w-full flex flex-col md:flex-row gap-8 mt-8 mb-6">
             <TextInput
               withAsterisk
               type="text"

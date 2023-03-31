@@ -139,7 +139,7 @@ function Hero() {
         >
           {carouselItem}
         </Carousel>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-6 w-full mt-5 ">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-2 w-full mt-5 ">
           {cards}
         </div>
       </div>

@@ -2,5 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
 };
-
-module.exports = nextConfig;
+module.exports = {
+  images: {
+    domains: ["swiperjs.com"],
+  },
+};
+// module.exports = nextConfig;

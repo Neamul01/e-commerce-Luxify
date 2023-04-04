@@ -6,8 +6,12 @@ type Props = {
 };
 export default function CommonLayout({ children, customClass }: Props) {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className={`${customClass && customClass} bg-white`}>{children}</div>
+    <div className="bg-white">
+      <div className="max-w-7xl mx-auto ">
+        <div className={`${customClass && customClass} bg-white`}>
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

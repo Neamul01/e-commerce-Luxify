@@ -8,7 +8,12 @@ import {
   Avatar,
   Text,
   rem,
+  Button,
+  Input,
 } from "@mantine/core";
+import CustomButton from "../../components/Buttons/CustomButton";
+import ShoppingCartTable from "./ShoppingCartTable";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const useStyles = createStyles((theme) => ({
   rowSelected: {
@@ -57,46 +62,6 @@ const data: TableSelectionProps = [
 
 export default function ShoppingCart() {
   const { classes } = useStyles();
-  const [count, setCount] = useState(0);
-
-  const rows = data.map((item) => {
-    return (
-      <tr key={item.id}>
-        <td>
-          <Avatar size={76} src={item.avatar} radius={26} />
-        </td>
-        <td className="!py-6">
-          <Text size="sm" weight={500} className="max-w-[10rem]">
-            {item.product}
-          </Text>
-        </td>
-        <td className="!py-6">${item.price}</td>
-        <td className="!py-6">
-          <div className="text-base text-gray-600 flex items-center">
-            <button
-              onClick={() => setCount(count - 1)}
-              className="border-r-0 border py-2 px-3 cursor-pointer"
-              disabled={count === 0}
-            >
-              -
-            </button>
-            <p className="border py-2 px-3">
-              {" "}
-              {count} {item.quantity}{" "}
-            </p>
-            <button
-              onClick={() => setCount(count + 1)}
-              className="border-l-0 border py-2 px-3 cursor-pointer"
-            >
-              +
-            </button>
-          </div>
-        </td>
-        <td className="!py-6">{item.subtotal}</td>
-      </tr>
-    );
-  });
-
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-8">
@@ -111,9 +76,51 @@ export default function ShoppingCart() {
                 <th>Subtotal</th>
               </tr>
             </thead>
-            <tbody>{rows}</tbody>
+            <tbody>
+              {data.map((item) => {
+                return <ShoppingCartTable key={item.id} item={item} />;
+              })}
+            </tbody>
           </Table>
         </ScrollArea>
+        <div className="w-full flex justify-between my-6">
+          <div className="w-full">
+            <CustomButton
+              text="Continue Shopping"
+              iconWithClass={
+                <AiOutlineArrowLeft className="font-bold text-xl mr-2" />
+              }
+              iconPosition="left"
+            />
+          </div>
+          <div className="w-full flex justify-end">
+            <Button
+              className="text-gray-500 border-gray-500"
+              size="md"
+              variant="outline"
+            >
+              Update cart
+            </Button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col gap-4 my-12">
+          <h2 className="text-xl font-extrabold uppercase">coupon discount</h2>
+          <Input
+            type="text"
+            variant="unstyled"
+            placeholder="Enter coupon code here..."
+            className="p-2 border-b"
+          />
+          <div className="">
+            <Button
+              size="md"
+              variant="outline"
+              className="text-black border-black"
+            >
+              Apply Coupon
+            </Button>
+          </div>
+        </div>
       </div>
       <div className="col-span-4"></div>
     </div>

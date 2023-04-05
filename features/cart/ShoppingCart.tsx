@@ -14,6 +14,7 @@ import {
 import CustomButton from "../../components/Buttons/CustomButton";
 import ShoppingCartTable from "./ShoppingCartTable";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import CardTotal from "./CardTotal";
 
 const useStyles = createStyles((theme) => ({
   rowSelected: {
@@ -63,7 +64,7 @@ const data: TableSelectionProps = [
 export default function ShoppingCart() {
   const { classes } = useStyles();
   return (
-    <div className="grid grid-cols-12">
+    <div className="grid grid-cols-12 gap-4">
       <div className="col-span-8">
         <ScrollArea>
           <Table miw={800} verticalSpacing="sm">
@@ -74,6 +75,7 @@ export default function ShoppingCart() {
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -122,7 +124,9 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
-      <div className="col-span-4"></div>
+      <div className="col-span-4 border p-6 px-10">
+        <CardTotal />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import { Avatar, Text } from "@mantine/core";
+import { Avatar, Button, Text } from "@mantine/core";
 import React, { useState } from "react";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 export default function ShoppingCartTable({ item }: any) {
   const [count, setCount] = useState(Number(item.quantity));
@@ -38,6 +39,14 @@ export default function ShoppingCartTable({ item }: any) {
         </div>
       </td>
       <td className="!py-6">{item.subtotal}</td>
+      <td className="!py-6">
+        <Button
+          variant="subtle"
+          className="text-gray-700 hover:!bg-transparent border-none p-0"
+        >
+          <RiCloseCircleLine className="text-xl" />
+        </Button>
+      </td>
     </tr>
   );
 }

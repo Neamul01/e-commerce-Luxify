@@ -4,14 +4,62 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFacebook, BsHeart, BsInstagram, BsTwitter } from "react-icons/bs";
 import CustomButton from "../../components/Buttons/CustomButton";
 import DetailsSection from "./DetailsSection";
+import ProductImage from "./ProductImage/ProductImage";
+import img1 from "../../public/products/1.jpg";
+import img2 from "../../public/products/2.jpg";
+import { StaticImageData } from "next/image";
+import ProductCard from "../../components/Products/ProductCard";
+
+type ProductCard = {
+  id: number;
+  img: StaticImageData[];
+  title: string;
+  price: number;
+  rating: number;
+  status?: string;
+}[];
+
+const productCards: ProductCard = [
+  {
+    id: 1,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 29,
+    rating: 4.5,
+    status: "sale",
+  },
+  {
+    id: 2,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 59,
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 4,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+];
 
 export default function ProductDescription() {
   const [rating, setRating] = useState(4.5);
   const [count, setCount] = useState(0);
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-2">
-        <div className="col-span-1">image</div>
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="col-span-1 !max-h-[40rem]">
+          <ProductImage />
+        </div>
         <div className="col-span-1 border-l pl-5">
           <div className="flex flex-col gap-4">
             <p className="text-3xl font-bold">Fashionable Watch</p>
@@ -103,8 +151,24 @@ export default function ProductDescription() {
           </div>
         </div>
       </div>
-      <div className="w-full mt-16">
+      <div className="w-full mt-16 px-4">
         <DetailsSection />
+      </div>
+      <div className="w-full mb-16 mt-24 px-4">
+        <div className="flex flex-col items-center justify-center max-w-7xl mx-auto">
+          <h2 className="text-3xl text-black font-semibold w-full text-center">
+            Related Products
+          </h2>
+          <div className="w-full grid md:grid-cols-4 gap-1">
+            {productCards.map((card) => {
+              return (
+                <div className="px-4 md:px-0 overflow-hidden" key={card.id}>
+                  <ProductCard props={card} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

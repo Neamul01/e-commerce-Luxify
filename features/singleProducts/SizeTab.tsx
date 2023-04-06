@@ -19,8 +19,8 @@ const rows = elements.map((element) => (
 ));
 export default function SizeTab() {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-4">picture</div>
+    <div className="grid md:grid-cols-12">
+      <div className="col-span-4 mb-4 md:mb-0">picture</div>
       <div className="col-span-8">
         <Table verticalSpacing="xs">
           <thead className="mb-3">

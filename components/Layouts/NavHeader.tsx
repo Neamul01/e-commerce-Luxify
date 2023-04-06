@@ -13,6 +13,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { BsTelephone } from "react-icons/bs";
+import Link from "next/link";
 
 function NavHeader() {
   return (
@@ -35,7 +36,9 @@ function NavHeader() {
           </div>
           <div className="flex gap-2">
             <span className="hidden md:block">
-              <CgProfile className="text-4xl" />
+              <Link href={"/dashboard"}>
+                <CgProfile className="text-4xl" />
+              </Link>
             </span>
             <span className="hidden  sm:block">
               <AiOutlineHeart className="text-4xl" />
@@ -45,7 +48,9 @@ function NavHeader() {
               <span className="">Shopping Cart</span>
               <span className="font-bold">$00</span>
             </p>
-            <AiOutlineShoppingCart className="text-4xl" />
+            <Link href={"/cart"}>
+              <AiOutlineShoppingCart className="text-4xl" />
+            </Link>
           </div>
         </div>
       </div>

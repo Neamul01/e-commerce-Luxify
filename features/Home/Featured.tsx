@@ -81,7 +81,7 @@ export default function Featured() {
             })}
           </div>
         </div>
-        <div className="w-full flex gap-2 items-center">
+        <div className="w-full flex flex-col md:flex-row gap-2 items-center">
           {bottomBanner.map((banner) => (
             <div key={banner.id} className="w-full relative">
               <Image src={banner.img} alt="banner" className="w-full" />
@@ -90,7 +90,7 @@ export default function Featured() {
                   banner.customClass && banner.customClass
                 }`}
               >
-                <p className="font-bold text-3xl">{banner.title}</p>
+                <p className="font-bold md:text-3xl text-xl">{banner.title}</p>
                 <div className="w-full">
                   <CustomButton
                     size="lg"

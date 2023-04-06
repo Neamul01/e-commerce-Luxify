@@ -83,6 +83,7 @@ const links: HeaderSearchProps[] = [
     ],
   },
   { link: "/contact", label: "Contact" },
+  { link: "/dashboard", label: "Dashboard" },
 ];
 
 export function NavHeader() {

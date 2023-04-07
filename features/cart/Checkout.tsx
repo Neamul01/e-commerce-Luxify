@@ -1,14 +1,7 @@
-import {
-  Button,
-  Checkbox,
-  Group,
-  Input,
-  Radio,
-  Select,
-  Textarea,
-} from "@mantine/core";
+import { Checkbox, Input, Select, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React from "react";
+import OrderCard from "./OrderCard";
 
 export default function Checkout() {
   const form = useForm({
@@ -18,7 +11,7 @@ export default function Checkout() {
     },
   });
   return (
-    <div className="grid grid-cols-12 gap-4">
+    <div className="grid grid-cols-12 gap-10">
       <div className="col-span-7 flex flex-col gap-8">
         <div className="w-full flex flex-col gap-4">
           <h2 className="text-lg font-bold uppercase pb-4 border-b">
@@ -122,7 +115,9 @@ export default function Checkout() {
           </Input.Wrapper>
         </div>
       </div>
-      <div className="col-span-5">5</div>
+      <div className="col-span-5 border p-6 px-8">
+        <OrderCard />
+      </div>
     </div>
   );
 }

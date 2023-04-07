@@ -1,32 +1,15 @@
 import React, { useState } from "react";
-import { Timeline, Text, Tabs, Alert } from "@mantine/core";
+import { Tabs } from "@mantine/core";
 import CommonLayout from "../../components/Layouts/CommonLayout";
 import { IoIosArrowForward } from "react-icons/io";
 import ShoppingCart from "../../features/cart/ShoppingCart";
 import Checkout from "../../features/cart/Checkout";
 import CompleteOrder from "../../features/cart/CompleteOrder";
-import { TbAlertCircle } from "react-icons/tb";
 
 export default function index() {
   const [activeTab, setActiveTab] = useState("data");
   return (
     <CommonLayout customClass="pt-6 px-4 pb-20">
-      <div className="w-full mt-4 mb-8 flex flex-col gap-4">
-        <Alert
-          icon={<TbAlertCircle size="1rem" />}
-          color="red"
-          className="border"
-        >
-          Something terrible happened! You made a mistake and there is no going
-          back, your data was lost forever!
-        </Alert>
-        <Alert icon={<TbAlertCircle size="1rem" />} className="cursor-pointer">
-          Have a coupon?
-          <a href="#" className="ml-2 text-blue-500">
-            Click here to enter your code
-          </a>
-        </Alert>
-      </div>
       <Tabs defaultValue="shopping-cart">
         <Tabs.List
           position="center"

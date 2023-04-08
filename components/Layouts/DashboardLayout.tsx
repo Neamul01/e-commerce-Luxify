@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  createStyles,
-  Navbar,
-  Group,
-  Code,
-  getStylesRef,
-  rem,
-} from "@mantine/core";
+import { createStyles, Navbar, getStylesRef, rem } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -154,7 +147,7 @@ export default function DashboardLayout({ children }: Props) {
               </a>
             </Navbar.Section>
           </Navbar>
-          <div className="w-full px-2">{children}</div>
+          <div className="w-full px-2 mt-6">{children}</div>
         </div>
       </div>
     </div>

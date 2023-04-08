@@ -8,6 +8,7 @@ import {
   Container,
   rem,
   Input,
+  Navbar,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
@@ -130,7 +131,7 @@ export function NavHeader() {
   });
 
   return (
-    <Header
+    <Navbar
       height={56}
       className={`${classes.header} flex-shrink-0 !sticky !top-0 z-50 shadow-lg`}
     >
@@ -165,7 +166,7 @@ export function NavHeader() {
           />
         </div>
       </Container>
-    </Header>
+    </Navbar>
   );
 }
 

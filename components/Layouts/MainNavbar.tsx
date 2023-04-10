@@ -148,7 +148,7 @@ export function NavHeader() {
       height={56}
       className={` flex-shrink-0 z-50 shadow-lg  ${
         scrolled
-          ? "fixed !top-0 left-0 transform transition duration-500 ease-in-out translate-y-0"
+          ? "fixed !top-0 left-0 transform transition duration-1000 ease-in-out translate-y-0"
           : "static top-20 left-0"
       }}`}
     >

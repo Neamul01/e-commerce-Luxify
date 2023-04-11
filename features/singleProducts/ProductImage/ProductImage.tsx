@@ -46,10 +46,6 @@ export default function ProductImage() {
   return (
     <div className="w-full h-full">
       <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
-        }}
         loop={true}
         spaceBetween={10}
         navigation={true}

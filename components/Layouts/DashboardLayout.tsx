@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  createStyles,
-  Navbar,
-  Group,
-  Code,
-  getStylesRef,
-  rem,
-} from "@mantine/core";
+import { createStyles, Navbar, getStylesRef, rem } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -81,8 +74,8 @@ const useStyles = createStyles((theme) => ({
 
 const data = [
   { link: "/dashboard", label: "Dashboard", icon: "IconReceipt2" },
-  { link: "", label: "Orders", icon: "IconFingerprint" },
-  { link: "", label: "Address", icon: "IconKey" },
+  { link: "/dashboard/orders", label: "Orders", icon: "IconFingerprint" },
+  { link: "/dashboard/address", label: "Address", icon: "IconKey" },
   { link: "/dashboard/profile", label: "Profile", icon: "IconBellRinging" },
 ];
 
@@ -100,7 +93,7 @@ export default function DashboardLayout({ children }: Props) {
     <Link
       className={`${cx(classes.link, {
         [classes.linkActive]: item.label === active,
-      })} font-bold`}
+      })} font-bold border-b`}
       href={item.link}
       key={item.label}
     >
@@ -115,13 +108,18 @@ export default function DashboardLayout({ children }: Props) {
   ));
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="bg-white">
+    <div className=" bg-white">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold w-full text-center pt-10 pb-6">
           My Account
         </h2>
-        <div className="flex">
-          <Navbar height={700} width={{ sm: 300 }} p="md">
+        <div className="flex gap-4">
+          <Navbar
+            height={700}
+            width={{ sm: 300 }}
+            p="md"
+            className="border-none"
+          >
             <Navbar.Section grow>
               {/* <Group className={classes.header} position="apart">
                 logo
@@ -149,7 +147,7 @@ export default function DashboardLayout({ children }: Props) {
               </a>
             </Navbar.Section>
           </Navbar>
-          <div className="w-full px-2">{children}</div>
+          <div className="w-full px-2 mt-6">{children}</div>
         </div>
       </div>
     </div>

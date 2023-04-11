@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Timeline, Text, Tabs } from "@mantine/core";
+import { Tabs } from "@mantine/core";
 import CommonLayout from "../../components/Layouts/CommonLayout";
 import { IoIosArrowForward } from "react-icons/io";
 import ShoppingCart from "../../features/cart/ShoppingCart";
@@ -9,7 +9,7 @@ import CompleteOrder from "../../features/cart/CompleteOrder";
 export default function index() {
   const [activeTab, setActiveTab] = useState("data");
   return (
-    <CommonLayout customClass="py-6 px-4">
+    <CommonLayout customClass="pt-6 px-4 pb-20">
       <Tabs defaultValue="shopping-cart">
         <Tabs.List
           position="center"

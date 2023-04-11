@@ -1,16 +1,4 @@
-import { useState } from "react";
-import {
-  createStyles,
-  Table,
-  Checkbox,
-  ScrollArea,
-  Group,
-  Avatar,
-  Text,
-  rem,
-  Button,
-  Input,
-} from "@mantine/core";
+import { createStyles, Table, ScrollArea, Button, Input } from "@mantine/core";
 import CustomButton from "../../components/Buttons/CustomButton";
 import ShoppingCartTable from "./ShoppingCartTable";
 import { AiOutlineArrowLeft } from "react-icons/ai";

@@ -5,6 +5,7 @@ import MainNavbar from "../components/Layouts/MainNavbar";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { MainFooter } from "../components/Layouts/ManiFooter";
+import Sidebar from "../features/Home/Sidebar";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <NavHeader />
       <MainNavbar />
       <Component {...pageProps} />
+      <Sidebar />
       <MainFooter />
     </>
   );

@@ -1,17 +1,17 @@
 import {
   createStyles,
-  Header,
   Menu,
   Group,
   Center,
   Burger,
-  Container,
   rem,
   Input,
+  Navbar,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 // import { IconChevronDown } from "@tabler/icons-react";
 // import { MantineLogo } from "@mantine/ds";
 import { AiOutlineDown } from "react-icons/ai";
@@ -90,6 +90,21 @@ export function NavHeader() {
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
   const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  // Add the scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const items = links.map((link) => {
     const menuItems = link?.links2?.map((item) => (
@@ -112,7 +127,6 @@ export function NavHeader() {
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                {/* <IconChevronDown size="0.9rem" stroke={1.5} /> */}
                 <AiOutlineDown />
               </Center>
             </a>
@@ -130,42 +144,46 @@ export function NavHeader() {
   });
 
   return (
-    <Header
+    <Navbar
       height={56}
-      className={`${classes.header} flex-shrink-0 !sticky !top-0 z-50 shadow-lg`}
+      className={` flex-shrink-0 z-50 shadow-lg  ${
+        scrolled
+          ? "fixed !top-0 left-0 transform transition duration-1000 ease-in-out translate-y-0"
+          : "static top-20 left-0"
+      }}`}
     >
-      <Container>
-        <div className={classes.inner}>
-          <div className="flex gap-1 cursor-pointer">
-            <Menu
-              trigger="hover"
-              transitionProps={{ exitDuration: 0 }}
-              withinPortal
-            >
-              <Menu.Target>
-                <Center>
-                  <AiOutlineSearch className="text-2xl" />
-                  <span>Search</span>
-                </Center>
-              </Menu.Target>
-              <Menu.Dropdown>
-                <Input placeholder="Search" />
-              </Menu.Dropdown>
-            </Menu>
-          </div>
-          <Group spacing={5} className={`${classes.links}`}>
-            {items}
-          </Group>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            className={classes.burger}
-            size="sm"
-            color="#fff"
-          />
+      <div
+        className={`${classes.inner} justify-between w-full max-w-7xl mx-auto`}
+      >
+        <div className="flex gap-1 cursor-pointer">
+          <Menu
+            trigger="hover"
+            transitionProps={{ exitDuration: 0 }}
+            withinPortal
+          >
+            <Menu.Target>
+              <Center>
+                <AiOutlineSearch className="text-2xl" />
+                <span>Search</span>
+              </Center>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Input placeholder="Search" />
+            </Menu.Dropdown>
+          </Menu>
         </div>
-      </Container>
-    </Header>
+        <Group spacing={5} className={`${classes.links}`}>
+          {items}
+        </Group>
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size="sm"
+          color="#fff"
+        />
+      </div>
+    </Navbar>
   );
 }
 

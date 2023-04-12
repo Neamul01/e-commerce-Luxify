@@ -10,7 +10,7 @@ export default function address() {
         <h2 className="text-gray-500">
           The following addresses will be used on the checkout page by default.
         </h2>
-        <div className="flex justify-between mt-4">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-0 border p-4 md:border-none md:p-0 justify-between mt-4">
           <div className="">
             <h2 className="font-bold text-lg uppercase mb-4">
               billing address

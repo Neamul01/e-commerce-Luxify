@@ -10,7 +10,7 @@ export default function OrderCard() {
     },
   });
   return (
-    <div>
+    <div className="w-full">
       <h2 className="text-lg font-bold uppercase pb-4 border-b">Your Orders</h2>
 
       <div className="py-4 border-b">

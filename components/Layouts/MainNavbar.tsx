@@ -180,7 +180,7 @@ export function NavHeader() {
           onClick={toggle}
           className={classes.burger}
           size="sm"
-          color="#fff"
+          color="#000"
         />
       </div>
     </Navbar>

@@ -146,7 +146,7 @@ export function NavHeader() {
   return (
     <Navbar
       height={56}
-      className={` flex-shrink-0 z-50 shadow-lg  ${
+      className={` flex-shrink-0 z-50 shadow-lg px-4 md:px-0 border-b  ${
         scrolled
           ? "fixed !top-0 left-0 transform transition duration-1000 ease-in-out translate-y-0"
           : "static top-20 left-0"
@@ -162,7 +162,7 @@ export function NavHeader() {
             withinPortal
           >
             <Menu.Target>
-              <Center>
+              <Center className="text-black">
                 <AiOutlineSearch className="text-2xl" />
                 <span>Search</span>
               </Center>

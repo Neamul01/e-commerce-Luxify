@@ -52,7 +52,7 @@ const data: TableSelectionProps = [
 export default function ShoppingCart() {
   const { classes } = useStyles();
   return (
-    <div className="grid grid-cols-12 gap-4">
+    <div className="grid md:grid-cols-12 gap-4">
       <div className="col-span-8">
         <ScrollArea>
           <Table miw={800} verticalSpacing="sm">
@@ -112,7 +112,7 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
-      <div className="col-span-4 border p-6 px-10">
+      <div className="col-span-4 border p-6 md:px-10">
         <CardTotal />
       </div>
     </div>

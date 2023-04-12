@@ -12,9 +12,9 @@ export default function profile() {
   });
   return (
     <DashboardLayout>
-      <div className="col-span-7 flex flex-col gap-8 mb-10">
-        <div className="w-full flex flex-col gap-6">
-          <div className="flex gap-4 w-full">
+      <div className="col-span-7 flex flex-col gap-4 md:gap-8 mb-10">
+        <div className="w-full flex flex-col gap-6 border p-4 md:border-none md:p-0">
+          <div className="flex flex-col md:flex-row gap-4 w-full">
             <Input.Wrapper label="First Name" required className="w-full">
               <Input<any>
                 size="md"
@@ -50,6 +50,7 @@ export default function profile() {
             />
           </Input.Wrapper>
         </div>
+
         <div className="w-full flex flex-col gap-6 border p-4 mt-10">
           <p className="text-gray-500 text-base font-bold">Password Change</p>
           <Input.Wrapper

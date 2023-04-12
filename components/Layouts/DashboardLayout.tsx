@@ -113,41 +113,25 @@ export default function DashboardLayout({ children }: Props) {
         <h2 className="text-4xl font-bold w-full text-center pt-10 pb-6">
           My Account
         </h2>
-        <div className="flex gap-4">
-          <Navbar
-            height={700}
-            width={{ sm: 300 }}
-            p="md"
-            className="border-none"
-          >
-            <Navbar.Section grow>
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="p-4 md:p-0 h-full w-full md:w-[30rem] border-b-2 md:border-none">
+            <div>
               {/* <Group className={classes.header} position="apart">
                 logo
               </Group> */}
               {links}
-            </Navbar.Section>
-
-            <Navbar.Section className={classes.footer}>
-              <a
-                href="#"
-                className={classes.link}
-                onClick={(event) => event.preventDefault()}
+              <Link
+                className={`${cx(
+                  classes.link,
+                  {}
+                )} font-extrabold text-black border-b`}
+                href={"/"}
               >
-                {/* <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} /> */}
-                <span>Change account</span>
-              </a>
-
-              <a
-                href="#"
-                className={classes.link}
-                onClick={(event) => event.preventDefault()}
-              >
-                {/* <IconLogout className={classes.linkIcon} stroke={1.5} /> */}
-                <span>Logout</span>
-              </a>
-            </Navbar.Section>
-          </Navbar>
-          <div className="w-full px-2 mt-6">{children}</div>
+                Log Out
+              </Link>
+            </div>
+          </div>
+          <div className="w-full px-2 my-6">{children}</div>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function CompleteOrder() {
       {/* order details */}
       <div className="w-full my-10">
         <h2 className="text-2xl font-bold uppercase mb-4">order details</h2>
-        <div className="py-8 px-12 border">
+        <div className="py-8 md:px-12 px-4 border">
           <p className="font-bold capitalize pb-6 border-b text-lg">product</p>
           <p className="w-full flex justify-between text-sm py-8">
             <span>Fashionable Watch-Black-Large x 1</span>

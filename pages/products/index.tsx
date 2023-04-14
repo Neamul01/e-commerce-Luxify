@@ -1,8 +1,83 @@
-import { Anchor, Breadcrumbs, Button, Select } from "@mantine/core";
+import { Anchor, Breadcrumbs, Button, Pagination, Select } from "@mantine/core";
 import React from "react";
 import { FaList } from "react-icons/fa";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { AiOutlineHome, AiOutlineRight } from "react-icons/ai";
+import img1 from "../../public/products/1.jpg";
+import img2 from "../../public/products/2.jpg";
+import { StaticImageData } from "next/image";
+import ProductCard from "../../components/Products/ProductCard";
+
+type ProductCard = {
+  id: number;
+  img: StaticImageData[];
+  title: string;
+  price: number;
+  rating: number;
+  status?: string;
+}[];
+
+const productCard1: ProductCard = [
+  {
+    id: 1,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 29,
+    rating: 4.5,
+    status: "sale",
+  },
+  {
+    id: 2,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 59,
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 4,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 5,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 6,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 7,
+    img: [img1, img2],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+  {
+    id: 8,
+    img: [img2, img1],
+    title: "Fashionable Watch",
+    price: 39,
+    rating: 3.5,
+  },
+];
+
+const productCards = [...productCard1, ...productCard1];
 
 export default function index() {
   const items = [{ title: "Products", href: "#" }].map((item, index) => (
@@ -12,7 +87,7 @@ export default function index() {
   ));
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto flex flex-col gap-3">
+      <div className="max-w-7xl mx-auto flex flex-col gap-3 pb-20">
         {/* navigation */}
         <div className="text-sm flex items-center gap-1 mt-2">
           <AiOutlineHome />
@@ -97,7 +172,23 @@ export default function index() {
         </div>
 
         {/* products */}
-        <div className="w-full grid grid-cols-12"></div>
+        <div className="">
+          <div className="w-full grid md:grid-cols-4 gap-[1px] bg-gray-200">
+            {productCards.map((card) => {
+              return (
+                <div className="px-4 md:px-0" key={card.id}>
+                  <ProductCard props={card} />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* pagination */}
+          <div className="flex justify-between items-center pt-10  border-t">
+            <p className="text-sm">Showing 1–12 of 20 results</p>
+            <Pagination total={10} />
+          </div>
+        </div>
       </div>
     </div>
   );

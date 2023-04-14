@@ -72,7 +72,7 @@ interface HeaderSearchProps {
 
 const links: HeaderSearchProps[] = [
   { link: "/", label: "Home" },
-  { link: "products", label: "Products" },
+  { link: "/products", label: "Products" },
   {
     link: "/about",
     label: "About",

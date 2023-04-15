@@ -1,12 +1,12 @@
-import { Anchor, Breadcrumbs, Button, Pagination, Select } from "@mantine/core";
+import { Button, Pagination, Select } from "@mantine/core";
 import React from "react";
 import { FaList } from "react-icons/fa";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { AiOutlineHome, AiOutlineRight } from "react-icons/ai";
 import img1 from "../../public/products/1.jpg";
 import img2 from "../../public/products/2.jpg";
 import { StaticImageData } from "next/image";
 import ProductCard from "../../components/Products/ProductCard";
+import NavBroadcrumbs from "../../components/NavBroadcrumbs";
 
 type ProductCard = {
   id: number;
@@ -17,7 +17,7 @@ type ProductCard = {
   status?: string;
 }[];
 
-const productCard1: ProductCard = [
+const productCards: ProductCard = [
   {
     id: 1,
     img: [img1, img2],
@@ -77,25 +77,13 @@ const productCard1: ProductCard = [
   },
 ];
 
-const productCards = [...productCard1, ...productCard1];
-
 export default function index() {
-  const items = [{ title: "Products", href: "#" }].map((item, index) => (
-    <Anchor href={item.href} key={index} className=" text-gray-600">
-      {item.title}
-    </Anchor>
-  ));
+  const items = [{ title: "Products", href: "#" }];
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto flex flex-col gap-3 pb-20">
         {/* navigation */}
-        <div className="text-sm flex items-center gap-1 mt-2">
-          <AiOutlineHome />
-          <AiOutlineRight />
-          <Breadcrumbs separator="→" className="py-2">
-            {items}
-          </Breadcrumbs>
-        </div>
+        <NavBroadcrumbs items={items} />
 
         {/* searches */}
         <div className="flex justify-between items-center">

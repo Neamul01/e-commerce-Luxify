@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
-  customClass: string;
+  customClass?: string;
 };
 export default function CommonLayout({ children, customClass }: Props) {
   return (

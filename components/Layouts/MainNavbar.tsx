@@ -82,6 +82,7 @@ const links: HeaderSearchProps[] = [
       { link: "/contact", label: "Contact" },
     ],
   },
+  // { link: "/about", label: "About" },
   { link: "/contact", label: "Contact" },
   { link: "/dashboard", label: "Dashboard" },
 ];
@@ -108,7 +109,9 @@ export function NavHeader() {
 
   const items = links.map((link) => {
     const menuItems = link?.links2?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+      <Menu.Item key={item.link}>
+        <Link href={item.link}>{item.label}</Link>
+      </Menu.Item>
     ));
 
     if (menuItems) {

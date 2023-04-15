@@ -11,15 +11,17 @@ export default function NavBroadcrumbs(props: {
       <Link
         href={item.href}
         key={index}
-        className=" text-gray-600 hover:underline"
+        className=" text-gray-600 hover:underline capitalize"
       >
         {item.title}
       </Link>
     )
   );
   return (
-    <div className="text-sm flex items-center gap-1 pt-4 pb-2">
-      <Breadcrumbs separator={<AiOutlineRight />}>{items}</Breadcrumbs>
+    <div className="text-sm flex items-center pt-4 pb-2">
+      <Breadcrumbs separator={<AiOutlineRight size={"0.6rem"} />}>
+        {items}
+      </Breadcrumbs>
     </div>
   );
 }

@@ -71,11 +71,11 @@ const Sidebar = () => {
 
   return (
     <>
-      {router.pathname === "/" && (
+      {(router.pathname === "/" || router.pathname === "/products") && (
         <Aside
           className={`${
             scrolled ? "fixed top-20" : "absolute top-40 "
-          } bg-white shadow-2xl p-4 h-[34.25rem] w-20 z-50 xl:left-[13.5rem] lg:left-0 hidden lg:block`}
+          } bg-white shadow-2xl px-4 py-3 h-[34rem] w-[4.2rem] z-50 xl:left-[13.5rem] lg:left-0 hidden lg:block`}
         >
           <ul className="flex flex-col h-full justify-between text-gray-500 py-2">
             {sidebarItems.map((item) => (

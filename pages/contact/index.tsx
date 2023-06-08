@@ -24,7 +24,7 @@ export default function index() {
               <p className="text-gray-500 text-sm pb-2  ">
                 1600 Amphitheatre Parkway New York WC1 1BA
               </p>
-              <p className="text-gray-500 text-sm">New York WC1 1BA</p>
+              <p className="text-gray-500 text-sm">New York WC1 1BA </p>
             </div>
             <div className="">
               <h3 className="text-xl font-bold mb-2">Phone Number</h3>

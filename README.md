@@ -7,7 +7,10 @@
 - Next.js server rendering for more SEO friendly.
 - User friendly attractive and mobile friendly UI.
 - Good Accesiblity provided.
-- Full
+- Full ecommerce solution
+- Individual dashboard for users and Admins.
+- Admins can control from their dashboard.
+- User will navigate throgh their profile, Ordered items, track order etc. in dashboard.
 
 ## Used Technologies
 

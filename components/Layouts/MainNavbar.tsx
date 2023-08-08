@@ -110,7 +110,9 @@ export function NavHeader() {
   const items = links.map((link) => {
     const menuItems = link?.links2?.map((item) => (
       <Menu.Item key={item.link}>
-        <Link href={item.link}>{item.label}</Link>
+        <Link href={item.link} className="text-black">
+          {item.label}
+        </Link>
       </Menu.Item>
     ));
 
@@ -129,7 +131,9 @@ export function NavHeader() {
               onClick={(event) => event.preventDefault()}
             >
               <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
+                <span className={`${classes.linkLabel} text-black`}>
+                  {link.label}
+                </span>
                 <AiOutlineDown />
               </Center>
             </a>
@@ -140,7 +144,11 @@ export function NavHeader() {
     }
 
     return (
-      <Link key={link.label} href={link.link} className={classes.link}>
+      <Link
+        key={link.label}
+        href={link.link}
+        className={`${classes.link} text-black`}
+      >
         {link.label}
       </Link>
     );

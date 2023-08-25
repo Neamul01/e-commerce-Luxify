@@ -1,21 +1,16 @@
 import React from "react";
-import { useState } from "react";
-import {
-  createStyles,
-  Header,
-  Group,
-  ActionIcon,
-  Container,
-  Burger,
-  rem,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Header } from "@mantine/core";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { BsTelephone } from "react-icons/bs";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAuthState, setAuthState } from "../../store/slices/authSlice";
 
 function NavHeader() {
+  const authState = useSelector(selectAuthState);
+  const dispatch = useDispatch();
+
   return (
     <Header height={"auto"} className="border-none">
       <div className="!bg-[#2f7fd0] py-6 px-5">
@@ -51,6 +46,18 @@ function NavHeader() {
             <Link href={"/cart"}>
               <AiOutlineShoppingCart className="text-4xl" />
             </Link>
+            <div>
+              <div>{authState ? "Logged in" : "Not Logged In"}</div>
+              <button
+                onClick={() =>
+                  authState
+                    ? dispatch(setAuthState(false))
+                    : dispatch(setAuthState(true))
+                }
+              >
+                {authState ? "Logout" : "LogIn"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

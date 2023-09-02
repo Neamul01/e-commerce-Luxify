@@ -9,6 +9,8 @@ import img1 from "../../public/products/1.jpg";
 import img2 from "../../public/products/2.jpg";
 import { StaticImageData } from "next/image";
 import ProductCard from "../../components/Products/ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartState, setCartState } from "../../store/slices/cartSlice";
 
 type ProductCard = {
   id: number;
@@ -54,6 +56,11 @@ const productCards: ProductCard = [
 export default function ProductDescription() {
   const [rating, setRating] = useState(4.5);
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const cart = useSelector(selectCartState);
+
+  console.log("cart", cart);
+
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -110,7 +117,7 @@ export default function ProductDescription() {
                 >
                   -
                 </button>
-                <p className="border py-2 px-3"> {count} </p>
+                <p className="border py-2 px-3"> {count}</p>
                 <button
                   onClick={() => setCount(count + 1)}
                   className="border-l-0 border py-2 px-3 cursor-pointer"
@@ -125,6 +132,7 @@ export default function ProductDescription() {
                   Bg="bg-blue-600"
                   customClass="!flex !flex-row-reverse"
                   iconPosition="left"
+                  onClick={() => dispatch(setCartState({ count: 1 }))}
                   iconWithClass={
                     <AiOutlineShoppingCart className="font-bolder mr-2" />
                   }

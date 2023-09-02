@@ -10,6 +10,7 @@ type Props = {
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   text?: string;
   disabled?: boolean;
+  onClick?: () => void;
 };
 
 const CustomButton: React.FC<Props> = ({
@@ -21,12 +22,14 @@ const CustomButton: React.FC<Props> = ({
   size = "md",
   text = "Shop now",
   disabled = false,
+  ...rest
 }) => {
   return (
     <Button
       disabled={disabled}
       bg={Bg}
       size={size}
+      {...rest}
       className={`${Bg} hover:${hoverBg} ${customClass}`}
     >
       {iconPosition === "left" ? (

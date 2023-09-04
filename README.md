@@ -1,6 +1,6 @@
 # Luxify(E-commerce website)
 
-[Live Link](https://e-commerce-luxify.vercel.app/)
+[Live Link](https://e-commerce-luxify.vercel.app/) [Server Link(https://github.com/Neamul01/luxify-server)]
 
 ## Main Features
 

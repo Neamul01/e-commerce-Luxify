@@ -43,6 +43,14 @@ export const cartSlice = createSlice({
       // Calculate cartTotal within this reducer
       state.cartTotal = calculateCartTotal(state.cart);
     },
+
+    removeCartState(state, action) {
+      state.cart = state.cart.filter(
+        (newCart) => newCart.id !== action.payload.id
+      );
+      state.cartTotal = calculateCartTotal(state.cart);
+    },
+
     increaseCartCount(state, action) {
       const effectCart: any = state.cart.find(
         (c) => Number(c.id) === Number(action.payload.id)
@@ -75,8 +83,12 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setCartState, increaseCartCount, decreaseCartCount } =
-  cartSlice.actions;
+export const {
+  setCartState,
+  increaseCartCount,
+  decreaseCartCount,
+  removeCartState,
+} = cartSlice.actions;
 
 export const selectCartState = (state: AppState) => state.cart.cart;
 export const selectCartTotal = (state: AppState) => state.cart.cartTotal;

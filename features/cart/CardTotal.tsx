@@ -1,8 +1,11 @@
 import { Button, Group, Input, Radio, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React from "react";
+import { selectCartTotal } from "../../store/slices/cartSlice";
+import { useSelector } from "react-redux";
 
 export default function CardTotal() {
+  const cartTotal = useSelector(selectCartTotal);
   const form = useForm({
     initialValues: {
       name: "",
@@ -14,7 +17,7 @@ export default function CardTotal() {
       <h2 className="text-lg font-bold uppercase pb-4 border-b">card totals</h2>
       <p className="text-base font-bold flex justify-between py-4 border-b">
         <span>Subtotal</span>
-        <span>$30.00</span>
+        <span>${cartTotal}</span>
       </p>
       <div className="w-full">
         <p className="text-base font-bold flex justify-between pt-5 pb-3">
@@ -74,7 +77,7 @@ export default function CardTotal() {
         </div>
         <p className="text-base font-bold flex justify-between py-4">
           <span>Total</span>
-          <span className="text-lg">$30.00</span>
+          <span className="text-lg">${cartTotal}</span>
         </p>
         <Button
           variant="filled"

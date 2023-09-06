@@ -9,24 +9,9 @@ import { selectAuthState, setAuthState } from "../../store/slices/authSlice";
 import { selectCartState, selectCartTotal } from "../../store/slices/cartSlice";
 
 function NavHeader() {
-  const authState = useSelector(selectAuthState);
   const cart = useSelector(selectCartState);
   const dispatch = useDispatch();
   const cartTotal = useSelector(selectCartTotal);
-
-  // const cartTotal = () => {
-  //   let total = 0;
-  //   cart.map((c) => {
-  //     if (c.count > 1) {
-  //       return (total = total + c.price * c.count);
-  //     } else if (c.count === 0) {
-  //       return total;
-  //     } else {
-  //       return (total += c.price);
-  //     }
-  //   });
-  //   return total;
-  // };
 
   return (
     <Header height={"auto"} className="border-none">
@@ -66,18 +51,6 @@ function NavHeader() {
               </small>
               <AiOutlineShoppingCart className="text-4xl" />
             </Link>
-            <div>
-              <div>{authState ? "Logged in" : "Not Logged In"}</div>
-              <button
-                onClick={() =>
-                  authState
-                    ? dispatch(setAuthState(false))
-                    : dispatch(setAuthState(true))
-                }
-              >
-                {authState ? "Logout" : "LogIn"}
-              </button>
-            </div>
           </div>
         </div>
       </div>

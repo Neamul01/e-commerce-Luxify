@@ -73,7 +73,7 @@ export default function ShoppingCart() {
             </thead>
             <tbody>
               {cart.map((item) => {
-                return <ShoppingCartTable key={item} item={item} />;
+                return <ShoppingCartTable key={item.id} item={item} />;
               })}
             </tbody>
           </Table>

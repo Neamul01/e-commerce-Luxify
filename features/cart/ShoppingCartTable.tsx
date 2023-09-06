@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   decreaseCartCount,
   increaseCartCount,
+  removeCartState,
 } from "../../store/slices/cartSlice";
 
 export default function ShoppingCartTable({ item }: any) {
@@ -45,6 +46,7 @@ export default function ShoppingCartTable({ item }: any) {
       <td className="!py-6">
         <Button
           variant="subtle"
+          onClick={() => dispatch(removeCartState(item))}
           className="text-gray-700 hover:!bg-transparent border-none p-0"
         >
           <RiCloseCircleLine className="text-xl" />

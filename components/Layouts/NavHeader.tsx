@@ -6,10 +6,27 @@ import { BsTelephone } from "react-icons/bs";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState, setAuthState } from "../../store/slices/authSlice";
+import { selectCartState, selectCartTotal } from "../../store/slices/cartSlice";
 
 function NavHeader() {
   const authState = useSelector(selectAuthState);
+  const cart = useSelector(selectCartState);
   const dispatch = useDispatch();
+  const cartTotal = useSelector(selectCartTotal);
+
+  // const cartTotal = () => {
+  //   let total = 0;
+  //   cart.map((c) => {
+  //     if (c.count > 1) {
+  //       return (total = total + c.price * c.count);
+  //     } else if (c.count === 0) {
+  //       return total;
+  //     } else {
+  //       return (total += c.price);
+  //     }
+  //   });
+  //   return total;
+  // };
 
   return (
     <Header height={"auto"} className="border-none">
@@ -41,9 +58,12 @@ function NavHeader() {
             <p className="w-[1px] h-6 mx-2 bg-gray-400 my-auto hidden sm:block" />
             <p className="hidden md:flex flex-col gap-1 text-xs">
               <span className="">Shopping Cart</span>
-              <span className="font-bold">$00</span>
+              <span className="font-bold">$ {cart && cartTotal}</span>
             </p>
-            <Link href={"/cart"}>
+            <Link href={"/cart"} className="relative">
+              <small className="absolute -top-3 -right-1 font-bold bg-rose-500 px-2 py-[2px] rounded-full flex items-center justify-center">
+                {cart.length && cart.length}
+              </small>
               <AiOutlineShoppingCart className="text-4xl" />
             </Link>
             <div>

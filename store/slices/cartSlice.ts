@@ -11,19 +11,7 @@ const initialState: CartState = {
   cart: [],
 };
 
-const productsApi = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
-    getProducts: builder.query({
-      query: () => ({
-        url: "/products",
-      }),
-      providesTags: ["products"],
-    }),
-  }),
-});
-
-export const { useGetProductsQuery } = productsApi;
-
+// ----------slice
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -47,3 +35,17 @@ export const { setCartState } = cartSlice.actions;
 
 export const selectCartState = (state: AppState) => state.cart.cart;
 export default cartSlice.reducer;
+
+// ---------api face
+const productsApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getProducts: builder.query({
+      query: () => ({
+        url: "/products",
+      }),
+      providesTags: ["products"],
+    }),
+  }),
+});
+
+export const { useGetProductsQuery } = productsApi;

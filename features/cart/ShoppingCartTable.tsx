@@ -9,7 +9,7 @@ export default function ShoppingCartTable({ item }: any) {
   return (
     <tr key={item.id} className="!border-0">
       <td>
-        <Avatar size={76} src={item.avatar} radius={26} />
+        <Avatar size={76} src={item.img[0].src} radius={26} />
       </td>
       <td className="!py-6">
         <Text size="sm" weight={500} className="max-w-[10rem]">
@@ -38,7 +38,7 @@ export default function ShoppingCartTable({ item }: any) {
           </button>
         </div>
       </td>
-      <td className="!py-6">{item.subtotal}</td>
+      <td className="!py-6">{item.title}</td>
       <td className="!py-6">
         <Button
           variant="subtle"

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from "../store";
+import { apiSlice } from "../api/apiSlice";
 
 export type CartState = {
   cart: Array<object>;
@@ -9,6 +10,19 @@ export type CartState = {
 const initialState: CartState = {
   cart: [],
 };
+
+const productsApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getProducts: builder.query({
+      query: () => ({
+        url: "/products",
+      }),
+      providesTags: ["products"],
+    }),
+  }),
+});
+
+export const { useGetProductsQuery } = productsApi;
 
 export const cartSlice = createSlice({
   name: "cart",

@@ -1,9 +1,15 @@
 import { Avatar, Button, Text } from "@mantine/core";
 import React, { useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import {
+  decreaseCartCount,
+  increaseCartCount,
+} from "../../store/slices/cartSlice";
 
 export default function ShoppingCartTable({ item }: any) {
-  const [count, setCount] = useState(Number(item.quantity));
+  // const [count, setCount] = useState(Number(item.count));
+  const dispatch = useDispatch();
   //   console.log(item);
 
   return (
@@ -20,18 +26,15 @@ export default function ShoppingCartTable({ item }: any) {
       <td className="!py-6">
         <div className="text-base text-gray-600 flex items-center">
           <button
-            onClick={() => setCount(count - 1)}
+            onClick={() => dispatch(decreaseCartCount(item))}
             className="border-r-0 border py-2 px-3 cursor-pointer"
-            disabled={count === 0}
+            disabled={item.count === 0}
           >
             -
           </button>
-          <p className="border py-2 px-3">
-            {" "}
-            {count} {item.quantity}{" "}
-          </p>
+          <p className="border py-2 px-3"> {item.count} </p>
           <button
-            onClick={() => setCount(count + 1)}
+            onClick={() => dispatch(increaseCartCount(item))}
             className="border-l-0 border py-2 px-3 cursor-pointer"
           >
             +

@@ -55,7 +55,7 @@ export default function ShoppingCart() {
   const { classes } = useStyles();
   const cart = useSelector(selectCartState);
 
-  console.log(cart);
+  // console.log(cart);
   return (
     <div className="grid md:grid-cols-12 gap-4">
       <div className="col-span-8">

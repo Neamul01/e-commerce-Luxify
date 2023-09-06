@@ -59,7 +59,7 @@ export default function ProductDescription() {
   const dispatch = useDispatch();
   const cart = useSelector(selectCartState);
 
-  console.log("cart", cart);
+  // console.log("cart", cart);
 
   return (
     <div className="flex flex-col">

@@ -5,6 +5,8 @@ import Link from "next/link";
 import React from "react";
 import CustomButton from "../Buttons/CustomButton";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { setCartState } from "../../store/slices/cartSlice";
 
 type props = {
   props: {
@@ -19,6 +21,7 @@ type props = {
 export default function ProductCard(props: props) {
   const { hovered, ref } = useHover();
   const { id, img, title, price, rating, status } = props.props;
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -49,6 +52,7 @@ export default function ProductCard(props: props) {
         <Link
           href={`/products/${id}`}
           className="absolute bottom-[20%] bg-green-600 w-full text-center"
+          onClick={() => dispatch(setCartState(props.props))}
         >
           <CustomButton
             Bg="bg-blue-600"

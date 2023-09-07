@@ -3,6 +3,8 @@ import CustomButton from "../../components/Buttons/CustomButton";
 import ShoppingCartTable from "./ShoppingCartTable";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import CardTotal from "./CardTotal";
+import { useSelector } from "react-redux";
+import { selectCartState } from "../../store/slices/cartSlice";
 
 const useStyles = createStyles((theme) => ({
   rowSelected: {
@@ -51,6 +53,9 @@ const data: TableSelectionProps = [
 
 export default function ShoppingCart() {
   const { classes } = useStyles();
+  const cart = useSelector(selectCartState);
+
+  // console.log(cart);
   return (
     <div className="grid md:grid-cols-12 gap-4">
       <div className="col-span-8">
@@ -67,7 +72,7 @@ export default function ShoppingCart() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => {
+              {cart.map((item) => {
                 return <ShoppingCartTable key={item.id} item={item} />;
               })}
             </tbody>
